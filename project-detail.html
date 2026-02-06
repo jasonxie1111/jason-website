@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>作品詳情</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <!-- Prism CSS will be imported in JS or bundled -->
     <link rel="stylesheet" href="styles.css">
     <style>
         .project-detail {
@@ -16,19 +17,23 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
+
         .project-detail img {
             width: 100%;
             height: auto;
             border-radius: 10px;
             margin-bottom: 20px;
         }
+
         .project-detail h1 {
             color: var(--primary-color);
             margin-bottom: 20px;
         }
+
         .project-detail p {
             margin-bottom: 15px;
         }
+
         .back-btn {
             display: inline-block;
             background-color: var(--secondary-color);
@@ -39,9 +44,11 @@
             transition: background-color 0.3s;
             margin-top: 20px;
         }
+
         .back-btn:hover {
             background-color: #2980b9;
         }
+
         .technologies-container {
             text-align: center;
             margin: 30px 0;
@@ -69,6 +76,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background-color: var(--primary-color);
         }
+
         .code-section {
             margin-top: 30px;
             background-color: #272822;
@@ -112,6 +120,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -132,8 +141,7 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
-    <script src="project-detail.js"></script>
+    <script type="module" src="project-detail.js"></script>
 </body>
+
 </html>

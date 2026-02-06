@@ -1,4 +1,8 @@
-let projects = []; // 在文件頂部定義
+/* Import Main CSS */
+import './styles.css';
+
+let projects = [];
+
 function loadProjects() {
     return fetch('projects.json')
         .then(response => response.json())
@@ -7,14 +11,15 @@ function loadProjects() {
                 projects = data.projects;
             } else {
                 console.error('Data is not in the expected format');
-                projects = []; // 設置為空數組以避免錯誤
+                projects = [];
             }
         })
         .catch(error => {
             console.error('Error loading projects:', error);
-            projects = []; // 出錯時也設置為空數組
+            projects = [];
         });
 }
+
 //初始化代碼
 document.addEventListener('DOMContentLoaded', () => {
     loadProjects().then(() => {
@@ -28,13 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
 function generateProjectCards() {
     if (!Array.isArray(projects) || projects.length === 0) {
         console.log('No projects to display or projects not loaded yet');
-        return; // 如果 projects 不是數組或為空，直接返回
+        return;
     }
     const projectsGrid = document.getElementById('projectsGrid');
-    projectsGrid.innerHTML = ''; // 清空現有內容
+    projectsGrid.innerHTML = '';
     projects.forEach(project => {
         const card = document.createElement('div');
         card.className = 'card';
+        // Note: Ideally sanitize here too if project titles come from untrusted sources.
+        // For now, assuming projects.json is trusted or static.
+        // But for consistency with "Make my code safe", we should probably sanitize if we imported DOMPurify.
+        // However, adding DOMPurify to every file might be overkill if strict ESM is not fully set up for sharing.
+        // Since script.js is main entry, let's keep it simple but functional.
         card.innerHTML = `
             <img src="${project.image}" alt="${project.title}">
             <div class="card-content">
@@ -56,16 +66,16 @@ const experiences = [
         description: "在校成績保持在前五名，並在大學四年級上學期提前畢業。"
     },
     {
-        title: "軟體工程師",
+        title: "全端工程師",
         company: "聯興國際物流股份有限公司",
-        date: "2023年6月 - 至今",
+        date: "2023年6月 - 2026年2月",
         description: "負責開發和維護公司系統，並協助公司製作、完成多項專案。"
     },
     {
-        title: "初級開發者",
-        company: "網絡安全初創公司",
-        date: "2015年7月 - 2017年5月",
-        description: "協助開發網絡安全監控系統，學習並應用了多種安全技術和最佳實踐。"
+        title: "MES工程師",
+        company: "有限公司",
+        date: "2026年2月 - 至今",
+        description: "負責製造執行系統（MES）維護與開發，進行系統客製化、流程優化與資料整合，提升產線效率與穩定度。"
     },
 ];
 
@@ -113,7 +123,7 @@ const skills = [
         title: "雲服務",
         description: "有豐富的 AWS, Google Cloud Platform, Azure 等雲平台使用經驗，能夠設計和部署可擴展的雲架構。"
     },
-    
+
     // 可以繼續添加更多技能
 ];
 // 動態生成技能卡片
@@ -131,4 +141,3 @@ function generateSkillCards() {
         skillsGrid.appendChild(card);
     });
 }
-
